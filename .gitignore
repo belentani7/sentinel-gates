@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Build and test artifacts
+dist/
+coverage/
+reports/
+.stryker-tmp/
+
+# Local tooling
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+.idea/
+.vscode/

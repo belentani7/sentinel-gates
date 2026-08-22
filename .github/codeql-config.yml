@@ -1,0 +1,13 @@
+name: Sentinel Gates CodeQL
+
+queries:
+  - uses: security-and-quality
+
+paths:
+  - src
+
+paths-ignore:
+  - dist
+  - coverage
+  - reports
+  - node_modules

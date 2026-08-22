@@ -1,0 +1,54 @@
+name: Cambio trazable
+description: Propón una funcionalidad, corrección o refactorización con calidad y seguridad desde el inicio.
+title: "type: resumen breve"
+labels: ["needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Todo cambio debe mantener trazabilidad, seguridad, accesibilidad, rendimiento y pruebas proporcionales al riesgo.
+  - type: dropdown
+    id: change-type
+    attributes:
+      label: Tipo de cambio
+      options:
+        - feature
+        - fix
+        - refactor
+        - chore
+        - docs
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Contexto y problema
+      description: Explica quién se ve afectado, qué ocurre y por qué es importante.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Propuesta y límites
+      description: Describe el resultado esperado, lo que queda fuera del alcance y alternativas consideradas.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Criterios de aceptación
+      description: Escribe condiciones comprobables que demuestren que el cambio está terminado.
+      placeholder: |
+        - [ ] Comportamiento verificable 1
+        - [ ] Comportamiento verificable 2
+    validations:
+      required: true
+  - type: checkboxes
+    id: gates
+    attributes:
+      label: Impacto en quality gates
+      options:
+        - label: Requiere actualización de pruebas unitarias, integración o E2E.
+        - label: Requiere revisión de arquitectura o de contrato público.
+        - label: Requiere evaluación de seguridad, privacidad o permisos.
+        - label: Requiere evaluación de accesibilidad, rendimiento o Motion Principles en UI.
