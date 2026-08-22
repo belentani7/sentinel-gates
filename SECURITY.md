@@ -14,4 +14,4 @@ Un control automático no equivale a una garantía. Mantén los secretos fuera d
 
 ## Repositorios privados
 
-Algunas capacidades administradas de GitHub, como la revisión de dependencias y la publicación de resultados de análisis, pueden requerir que Code Security o GitHub Advanced Security estén habilitados en repositorios privados. El workflow mantiene `npm audit` como control local. Antes de marcar una verificación como requerida, confirma que el plan del repositorio soporta la ejecución y la subida de resultados.
+Algunas capacidades administradas de GitHub, como la revisión de dependencias y la publicación de resultados de análisis, pueden requerir que Code Security o GitHub Advanced Security estén habilitados en repositorios privados. Para evitar una falsa señal de aprobación, el workflow omite explícitamente Dependency Review y CodeQL mientras el repositorio sea privado, y los activa automáticamente al hacerlo público. El workflow mantiene `npm audit` como control local y TruffleHog como escaneo de secretos en ambos estados. Antes de marcar una verificación como requerida, confirma que el plan del repositorio soporta la ejecución y la subida de resultados.

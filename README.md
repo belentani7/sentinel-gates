@@ -58,9 +58,9 @@ const assessment = evaluateQualityAssessment({
 
 El workflow principal usa `pull_request`, `push` sobre `main` y ejecución manual. Sus permisos globales se reducen a lectura de contenido; CodeQL añade `security-events: write` solo en el trabajo que publica resultados. Las acciones externas se fijan a hashes de commit y Dependabot vigila sus actualizaciones. GitHub recomienda las referencias SHA para limitar el impacto de una acción comprometida. [3]
 
-La revisión de dependencias funciona en pull requests y falla por defecto cuando se detectan paquetes vulnerables. Está disponible en repositorios públicos y en privados con Code Security o GitHub Advanced Security activo. [4] Por ese motivo, antes de convertirla en check requerido en un repositorio privado, confirma que la capacidad correspondiente está habilitada. `npm audit` se mantiene como línea local de defensa.
+La revisión de dependencias funciona en pull requests y falla por defecto cuando se detectan paquetes vulnerables. Está disponible en repositorios públicos y en privados con Code Security o GitHub Advanced Security activo. [4] Por ese motivo, el workflow omite de forma explícita la revisión de dependencias y CodeQL cuando el repositorio es privado; al abrirlo al público, ambos controles quedan activos automáticamente. `npm audit` se mantiene como línea local de defensa, y la omisión debe tratarse como una limitación visible, no como aprobación de seguridad.
 
-El escaneo de secretos analiza el historial completo usando TruffleHog. CodeQL ejecuta las consultas `security-and-quality` sobre `src/`. StrykerJS es compatible con TypeScript, Node.js y frameworks de UI, por lo que el patrón se puede trasladar a servicios o aplicaciones sin reemplazar el modelo de pruebas. [5]
+El escaneo de secretos analiza el historial completo usando TruffleHog y se ejecuta tanto en privado como en público. Una vez público, CodeQL ejecuta las consultas `security-and-quality` sobre `src/`. StrykerJS es compatible con TypeScript, Node.js y frameworks de UI, por lo que el patrón se puede trasladar a servicios o aplicaciones sin reemplazar el modelo de pruebas. [5]
 
 ## Arquitectura y contribución
 
